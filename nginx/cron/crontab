@@ -1,0 +1,2 @@
+12  4   1   *   *   certbot renew
+*   *   *   *   *   echo "hello" >> ~/hello.log
