@@ -10,7 +10,7 @@ Minimal setup for an nginx server running in docker and secured with certbot
     - Services to prevent these issues exist but are out-of-scope here
 4. `ssh` into the server and clone this repo
 5. `cd` into the repo
-6. Run the docker containers `docker compose up`
+6. Run the docker containers `docker compose up --build -d`
 7. Get the id of the nginx container `docker ps`
-8. Exec into the nginx container `docker exec -it [container-id] ash`
-9. Run certbot `certbot --nginx -d yourdomain.com -d www.yourdomain.com`
+8. Obtain the letsencrypt certificates `docker exec ${CONTAINER_ID} certbot -n -m ${CONTACT_EMAIL} -d ${DOMAINS} --nginx`
+9. Start the auto-renew cron job `docker exec ${CONTAINER_ID} crond`
